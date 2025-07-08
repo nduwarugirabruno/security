@@ -1,6 +1,5 @@
 package io.links.security.service.impl;
 
-import io.links.security.entity.Role;
 import io.links.security.entity.User;
 import io.links.security.entity.app.auth.AuthenticationRequest;
 import io.links.security.entity.app.auth.AuthenticationResponse;
@@ -26,11 +25,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.USER)
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .email(request.email())
+                .password(passwordEncoder.encode(request.password()))
+                .role(request.role())
                 .build();
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);

@@ -15,3 +15,26 @@ spring:
                 format_sql: true
         database: postgresql
         open-in-view: true
+
+    security:
+        oauth2:
+            client:
+                registration:
+                    github:
+                        client-id: Ov23liltO2hCEX4pH7AY
+                        client-secret: 67108b5a43ac4eec983b6cf4342ecac0cee19286
+
+
+application:
+    security:
+        jwt:
+            secret-key: 548634DAD7409D87EB1DBC2B58452D536070941FAF2F4CE30479A91AEF05C4243B5DFF07ACF8EA541B2B73A155135B4CA1479C2A3C26C472FCB372A03BE1EAF9
+            expiration: 1296000000 # 15 days
+            refresh-token:
+                expiration: 2592000000 # 30 days
+
+logging:
+    level:
+        org:
+            springframework:
+                security: trace

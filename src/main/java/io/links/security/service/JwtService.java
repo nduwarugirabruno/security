@@ -3,15 +3,17 @@ package io.links.security.service;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 public interface JwtService {
+
     String extractUsername(String token);
 
     String generateToken(UserDetails userDetails);
 
-    String generateToken(Map<String, Object> extraClaims, UserDetails userDetails);
+    String generateRefreshToken(UserDetails userDetails);
+
+    String generateToken(Map<String, Object> extraClaims, UserDetails userDetails, long expirationDateTime);
 
     boolean isTokenValid(String token, UserDetails userDetails);
 
@@ -19,5 +21,4 @@ public interface JwtService {
 
     Date extractExpiration(String token);
 
-    List<String> extractRoles(String token);
 }

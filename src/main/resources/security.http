@@ -1,0 +1,63 @@
+### create different type of users :: ADMIN_SUDO
+POST localhost:8080/api/v1/auth/register
+Content-Type: application/json
+
+{
+	"firstName": "Bruno",
+	"lastName": "NDUWARUGIRA",
+	"email": "nduwarugirabruno@gmail.com",
+	"password": "123Link's",
+	"role": "ADMIN_SUDO"
+}
+
+### create different type of users :: ADMIN
+POST localhost:8080/api/v1/auth/register
+Content-Type: application/json
+
+{
+	"firstName": "Andy",
+	"lastName": "TCHOFO",
+	"email": "andytchofo@gmail.com",
+	"password": "123Andy",
+	"role": "ADMIN"
+}
+
+### create different type of users :: MANAGER_USERS
+POST localhost:8080/api/v1/auth/register
+Content-Type: application/json
+
+{
+	"firstName": "Ange",
+	"lastName": "AKARUGIRA",
+	"email": "akarugiraange@gmail.com",
+	"password": "123Ange",
+	"role": "MANAGER_USERS"
+}
+
+### create different type of users :: USER_STANDARD
+POST localhost:8080/api/v1/auth/register
+Content-Type: application/json
+
+{
+	"firstName": "Samuel",
+	"lastName": "UWARUGIRA",
+	"email": "uwarugirasamuel@gmail.com",
+	"password": "123Samuel",
+	"role": "USER_STANDARD"
+}
+
+###
+@admin_sudo_token = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuZHV3YXJ1Z2lyYWJydW5vQGdtYWlsLmNvbSIsImlhdCI6MTc1MDI4MTA3MywiZXhwIjoxNzUxNTc3MDczfQ.bF621LSHp_E7V2zE7xQuIv3-KgP_2uN2IYqBMpz_K0jSj_Ib6yPvfpiE7ELsVBNhEpkrsgW_6LkKhTPGGWdiWQ
+@admin_token = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbmR5dGNob2ZvQGdtYWlsLmNvbSIsImlhdCI6MTc1MDI4MTExNCwiZXhwIjoxNzUxNTc3MTE0fQ.QtFzZRXFb3K-fS00faDQC3E1dBnkpaUozv6q_L7DxRY6GB2JjyMDLthkNY3MgwSs7aOsjM5YgXgmC9IhJ-Kscw
+@manager_users_token = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJha2FydWdpcmFhbmdlQGdtYWlsLmNvbSIsImlhdCI6MTc1MDI4MTA5OSwiZXhwIjoxNzUxNTc3MDk5fQ.5dAaczeDYKXhIoJrxH7rR8RgKYb7khmKDkjTMln4OC1NFb_DYL-Zgbd9rAxgJsAdqIREKyH_8VcWNoDnJgKUog
+@user_standard_token = eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1d2FydWdpcmFzYW11ZWxAZ21haWwuY29tIiwiaWF0IjoxNzUwMjgyODc2LCJleHAiOjE3NTE1Nzg4NzZ9.AbGjZ98y8UScJjwdkRNUr41xPNVETuMtbcn87mwOQIOhcdZOA8Jja0nwbXKrTaOdKQ-Yu8tungZhwQuaPcRsJA
+
+### TEST des différents end-points admin
+GET localhost:8080/api/v1/admin/get/options
+Authorization: Bearer {{manager_users_token}}
+Accept: application/json
+
+### TEST des différents end-points
+GET localhost:8080/api/v1/manager
+Authorization: Bearer {{admin_sudo_token}}
+Accept: application/json
